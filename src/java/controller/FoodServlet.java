@@ -5,12 +5,14 @@
  */
 package controller;
 
+import entities.Food;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.FoodModel;
 
 /**
  *
@@ -35,12 +37,17 @@ public class FoodServlet extends HttpServlet {
              
             String action= request.getParameter("action");
            String page="";
-            FoodModel tk= new FoodModel();
+          
            if   (action.equals("them")){
+               Food food= new Food();
+               food.setFoodVName(request.getParameter("tenthucphamTV"));
+               food.setFoodEName(request.getParameter("tenthucphamTA"));
+               food.setFoodImage(page);
+           }
            page= "/Admin/Food.jsp";        
            
-           MemberAccount memberaccount= tk.thongtin(memberID);
-           tk.xoa(memberaccount);
+           
+           
         }
     }
 
